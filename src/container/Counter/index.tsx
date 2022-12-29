@@ -49,7 +49,7 @@ function Counter() {
               className="action-button"
               onFocus={() => pageRef.current.focus()}
             >
-              {isRunning ? "RESUME" : "START"}
+              {isRunning ? "PAUSE" : "START"}
             </button>
 
             <button
