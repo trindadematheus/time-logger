@@ -14,6 +14,11 @@ export default function App({ Component, pageProps }: AppProps) {
           rel="stylesheet"
         />
 
+        <meta
+          name="description"
+          content="Track and remember important events and tasks with TimeLogger, a user-friendly web-based tool featuring a timer and marker system."
+        />
+
         <title>
           TimeLogger - Never miss the best moments of your live stream again
         </title>
