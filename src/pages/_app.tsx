@@ -1,7 +1,11 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import Modal from "react-modal";
 
+import { ShortcutsProvider } from "../hooks/use-shortcuts";
 import { GlobalStyle } from "../styles/global";
+
+Modal.setAppElement("#__next");
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -24,7 +28,9 @@ export default function App({ Component, pageProps }: AppProps) {
         </title>
       </Head>
 
-      <Component {...pageProps} />
+      <ShortcutsProvider>
+        <Component {...pageProps} />
+      </ShortcutsProvider>
 
       <GlobalStyle />
     </>

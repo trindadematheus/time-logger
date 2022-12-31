@@ -1,1 +1,1 @@
-export { default } from "../container/Counter";
+export { default } from "../containers/Counter";
