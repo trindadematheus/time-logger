@@ -53,6 +53,7 @@ export const Actions = styled.section`
     border-radius: 4px;
     height: 40px;
     width: 100%;
+    padding: 0px 12px;
 
     font-weight: bold;
     font-size: 14px;
@@ -63,6 +64,11 @@ export const Actions = styled.section`
     :hover {
       opacity: 0.8;
     }
+  }
+
+  .secondary {
+    background-color: #333;
+    color: #eee;
   }
 `;
 
