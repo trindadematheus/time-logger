@@ -97,12 +97,12 @@ export const Item = styled.div`
     gap: 8px;
 
     .item-action-button {
-      background-color: #63fae2;
+      background-color: red;
       border-radius: 4px;
       padding: 8px 14px;
 
       font-weight: bold;
-      color: #222;
+      color: black;
 
       transition: all 400ms;
 
@@ -110,5 +110,56 @@ export const Item = styled.div`
         opacity: 0.8;
       }
     }
+  }
+`;
+
+export const ModalContent = styled.div`
+  background-color: #222;
+  padding: 40px;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .modal-title {
+    color: #eee;
+    margin-bottom: 20px;
+  }
+
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .label {
+    color: #999;
+    font-size: 12px;
+  }
+
+  .select-key {
+    background-color: #333;
+    border-radius: 4px;
+    height: 40px;
+    padding: 0px 10px;
+    color: white;
+  }
+
+  .input-message {
+    height: 40px;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 4px;
+    color: white;
+  }
+
+  .btn-submit {
+    background-color: green;
+    height: 40px;
+    margin-top: 20px;
+    background-color: #63fae2;
+    border-radius: 4px;
+    font-weight: bold;
   }
 `;

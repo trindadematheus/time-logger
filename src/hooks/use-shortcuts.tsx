@@ -11,7 +11,8 @@ interface ShortcutsProviderProps {
 interface ShortcutsContextProps {
   shortcuts: Shortcut[];
   setShortcuts(data: Shortcut[]): void;
-  addShortcut(data: Shortcut): void;
+  addShortcut(data: Pick<Shortcut, "key" | "message">): void;
+  deleteShortcut(id: string): void;
 }
 
 const ShortcutsContext = createContext<ShortcutsContextProps | null>(null);
@@ -53,7 +54,17 @@ export function ShortcutsProvider({ children }: ShortcutsProviderProps) {
 
   function editShortcut() {}
 
-  function deleteShortcut() {}
+  function deleteShortcut(shortcutId: string) {
+    const newShortcuts = shortcuts.filter(
+      (shortcut) => shortcut.id !== shortcutId
+    );
+
+    setShortcuts(newShortcuts);
+    setCookie(null, "shortcuts", JSON.stringify(newShortcuts), {
+      maxAge: 30 * 24 * 60 * 60,
+      path: "/",
+    });
+  }
 
   return (
     <ShortcutsContext.Provider
@@ -61,6 +72,7 @@ export function ShortcutsProvider({ children }: ShortcutsProviderProps) {
         shortcuts,
         setShortcuts,
         addShortcut,
+        deleteShortcut,
       }}
     >
       {children}
