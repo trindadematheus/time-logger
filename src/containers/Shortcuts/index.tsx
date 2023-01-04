@@ -1,4 +1,5 @@
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
 
 import { useShortcuts } from "../../hooks/use-shortcuts";
@@ -12,8 +13,13 @@ function Shortcuts() {
   const [key, setKey] = useState("");
   const [message, setMessage] = useState("");
 
+  useEffect(() => {
+    setKey("");
+    setMessage("");
+  }, [isModalAddShortcutOpen]);
+
   function handleSave() {
-    addShortcut({ key, message });
+    addShortcut({ key, message: message || "Something" });
     setIsModalAddShortcutOpen(false);
   }
 
@@ -23,7 +29,9 @@ function Shortcuts() {
         <S.Container>
           <S.Header>
             <div className="left-content">
-              <h1 className="title">{"<"} Shortcuts</h1>
+              <Link href="/">
+                <h1 className="title">{"<"} Shortcuts</h1>
+              </Link>
             </div>
 
             <div className="right-content">
@@ -62,28 +70,46 @@ function Shortcuts() {
       <Modal
         isOpen={isModalAddShortcutOpen}
         onRequestClose={() => setIsModalAddShortcutOpen(false)}
+        className="Modal"
+        overlayClassName="Overlay"
       >
-        <select value={key} onChange={(e) => setKey(e.target.value)}>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
+        <S.ModalContent>
+          <h2 className="modal-title">+ New Shortcut</h2>
 
-        <input
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          type="text"
-          placeholder="Message"
-        />
+          <div className="form-wrapper">
+            <label className="label">Numeric key:</label>
+            <select
+              className="select-key"
+              value={key}
+              onChange={(e) => setKey(e.target.value)}
+            >
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </div>
 
-        <button onClick={handleSave}>Salvar</button>
+          <div className="form-wrapper">
+            <label className="label">Marker message:</label>
+            <input
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="input-message"
+              placeholder="Message"
+            />
+          </div>
+
+          <button className="btn-submit" onClick={handleSave}>
+            SALVAR
+          </button>
+        </S.ModalContent>
       </Modal>
     </>
   );

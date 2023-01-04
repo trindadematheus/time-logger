@@ -30,4 +30,22 @@ export const GlobalStyle = createGlobalStyle`
     opacity: 0.6;
     cursor: not-allowed;
   }
+
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(10px);
+    background-color: rgba(20, 20, 20, 0.8);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Modal {
+    position: absolute;
+  }
 `;
