@@ -97,12 +97,12 @@ export const Item = styled.div`
     gap: 8px;
 
     .item-action-button {
-      background-color: #63fae2;
+      background-color: red;
       border-radius: 4px;
       padding: 8px 14px;
 
       font-weight: bold;
-      color: #222;
+      color: black;
 
       transition: all 400ms;
 

@@ -5,7 +5,7 @@ import { useShortcuts } from "../../hooks/use-shortcuts";
 import * as S from "./styles";
 
 function Shortcuts() {
-  const { addShortcut, shortcuts } = useShortcuts();
+  const { addShortcut, shortcuts, deleteShortcut } = useShortcuts();
 
   const [isModalAddShortcutOpen, setIsModalAddShortcutOpen] = useState(false);
 
@@ -45,8 +45,13 @@ function Shortcuts() {
                 </div>
 
                 <div className="item-right-content">
-                  <button className="item-action-button">E</button>
-                  <button className="item-action-button">D</button>
+                  {/* <button className="item-action-button">E</button> */}
+                  <button
+                    onClick={() => deleteShortcut(shortcut.id)}
+                    className="item-action-button"
+                  >
+                    REMOVE
+                  </button>
                 </div>
               </S.Item>
             ))}
